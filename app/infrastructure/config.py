@@ -15,6 +15,7 @@ class Config:
     LOG_FILE_PATH = os.path.join(LOG_FOLDER, LOG_FILENAME)
     LOGGER_NAME = 'logger'
     TIME_FORMAT = r'%Y-%m-%d %H:%M:%S'
+    STATIC = os.path.join(basedir, 'static')
 
 
 class TestConfig(Config):

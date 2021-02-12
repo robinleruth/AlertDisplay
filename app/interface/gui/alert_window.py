@@ -12,5 +12,6 @@ class AlertWindow(Thread):
 
     def run(self) -> None:
         root = Tk()
+        Label(root, text=self.alert.time).pack()
         Label(root, text=self.alert.message).pack()
         root.mainloop()

@@ -7,6 +7,7 @@ from app.interface.gui.crontab_handler import CrontabHandler
 from app.interface.gui.input import Input
 from app.interface.gui.item import Item
 from app.interface.gui.navbar import Navbar
+from app.interface.gui.show_rule import ShowRule
 
 
 class Main(tk.Frame):
@@ -21,6 +22,7 @@ class Main(tk.Frame):
         self.navbar.pack(side="left", fill='y')
         self.main_frame = tk.Frame(self)
         self.main_frame.pack(fill='both', expand=True)
+        self.show_rule = ShowRule(self.main_frame)
 
         self.crontab_frame = CrontabHandler(self.main_frame)
 
@@ -50,8 +52,14 @@ class Main(tk.Frame):
     def switch_main(self, value):
         if value == 'Alerts':
             self.crontab_frame.pack_forget()
+            self.show_rule.pack_forget()
             self.alert_frame.pack()
         elif value == 'CronTab':
             self.alert_frame.pack_forget()
+            self.show_rule.pack_forget()
             self.crontab_frame.pack()
             self.crontab_frame.refresh()
+        elif value == 'Cron rules':
+            self.crontab_frame.pack_forget()
+            self.alert_frame.pack_forget()
+            self.show_rule.pack()
